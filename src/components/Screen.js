@@ -3,18 +3,32 @@ import { connect } from 'react-redux';
 
 class Screen extends Component {
   render() {
+    let stackItems = 
+        this.props.stack
+            .map( (number, index) => {
+                return (
+                    <li className="list-group-item" key={index}>
+                        {number}
+                    </li>
+                    );
+            });
+
     return (
-      <div>
-        <div className="well">
-            {this.props.entryBuffer}
+        <div className="panel panel-default">
+            <ul className="list-group">
+                {stackItems}
+            </ul>
+            <div className="panel-footer">
+                {this.props.entryBuffer}
+            </div>
         </div>
-      </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
-    entryBuffer: state.entryBuffer
+    entryBuffer: state.entryBuffer,
+    stack: state.stack,
 });
 
 export default connect(mapStateToProps)(Screen);
