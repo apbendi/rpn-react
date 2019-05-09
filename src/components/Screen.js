@@ -1,15 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Screen extends Component {
   render() {
     return (
       <div>
         <div className="well">
-            0
+            {this.props.entryBuffer}
         </div>
       </div>
     )
   }
 }
 
-export default Screen;
+const mapStateToProps = state => ({
+    entryBuffer: state.entryBuffer
+});
+
+export default connect(mapStateToProps)(Screen);
