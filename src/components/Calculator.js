@@ -19,6 +19,7 @@ class Calculator extends Component {
                 <NumberButton number={4} />
                 <NumberButton number={5} />
                 <NumberButton number={6} />
+                <OperatorButton symbol={"-"} action={ (left, right) => left - right} />
             </div>
             <div className="row">
                 <NumberButton number={7} />

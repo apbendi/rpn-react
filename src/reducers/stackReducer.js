@@ -10,9 +10,9 @@ export default function(stack = initialStack, action) {
             if (stack.length < 2) {
                 return stack;
             }
-            
-            let left = stack[stack.length - 1];
-            let right = stack[stack.length - 2];
+
+            let left = stack[stack.length - 2];
+            let right = stack[stack.length - 1];
             let newValue = action.payload(left, right);
 
             let newStack = stack.slice(0, stack.length - 2)
