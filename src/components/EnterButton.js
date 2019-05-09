@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { pressEnter } from '../actions/entryBufferActions';
+import entryBufferReducer from '../reducers/entryBufferReducer';
 
 class EnterButton extends Component {
     
@@ -11,7 +12,7 @@ class EnterButton extends Component {
 
     onClick(event) {
         event.preventDefault();
-        this.props.pressEnter();
+        this.props.pressEnter(this.props.entryBuffer);
     }
 
     render() {
@@ -28,8 +29,12 @@ class EnterButton extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    entryBuffer: state.entryBuffer
+});
+
 const actionCreators = {
     pressEnter,
 }
 
-export default connect(null, actionCreators)(EnterButton);
+export default connect(mapStateToProps, actionCreators)(EnterButton);

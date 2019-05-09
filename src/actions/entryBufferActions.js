@@ -7,8 +7,9 @@ export function pressNumber(number) {
     }
 }
 
-export function pressEnter() {
+export function pressEnter(bufferNumber) {
     return {
         type: PRESS_ENTER,
+        payload: bufferNumber,
     }
 }
