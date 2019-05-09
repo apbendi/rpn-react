@@ -3,15 +3,29 @@ import { connect } from 'react-redux';
 import { pressNumber } from '../actions/entryBufferActions';
 
 class NumberButton extends Component {
-  render() {
-    return (
-      <div>
-        <button type="button" className="btn btn-default" onClick={() => this.props.pressNumber(1)}>
-            1
-        </button>
-      </div>
-    )
-  }
+
+    constructor(props) {
+        super(props);
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick(event) {
+        event.preventDefault();
+        this.props.pressNumber(this.props.number);
+    }
+
+    render() {
+        return (
+        <div>
+            <button type="button" 
+                    className="btn btn-default col col-md-1" 
+                    onClick={this.onClick}
+            >
+                {this.props.number}
+            </button>
+        </div>
+        )
+    }
 }
 
 const actionCreators = {

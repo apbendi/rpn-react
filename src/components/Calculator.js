@@ -7,7 +7,24 @@ class Calculator extends Component {
     return (
         <div className="container">
             <Screen />
-            <NumberButton />
+            <div className="row">
+                <NumberButton number={1} />
+                <NumberButton number={2} />
+                <NumberButton number={3} />
+            </div>
+            <div className="row">
+                <NumberButton number={4} />
+                <NumberButton number={5} />
+                <NumberButton number={6} />
+            </div>
+            <div className="row">
+                <NumberButton number={7} />
+                <NumberButton number={8} />
+                <NumberButton number={9} />
+            </div>
+            <div className="row">
+                <NumberButton number={0} />
+            </div>
         </div>
     );
   }
