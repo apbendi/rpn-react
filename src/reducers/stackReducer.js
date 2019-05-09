@@ -1,12 +1,25 @@
-import { PRESS_ENTER } from '../actions/types';
+import { PRESS_ENTER, PRESS_OPERATOR } from '../actions/types';
 
-const initialState = [];
+const initialStack = [];
 
-export default function(state = initialState, action) {
+export default function(stack = initialStack, action) {
     switch (action.type) {
         case PRESS_ENTER:
-            return [...state, action.payload];
+            return [...stack, action.payload];
+        case PRESS_OPERATOR:
+            if (stack.length < 2) {
+                return stack;
+            }
+            
+            let left = stack[stack.length - 1];
+            let right = stack[stack.length - 2];
+            let newValue = action.payload(left, right);
+
+            let newStack = stack.slice(0, stack.length - 2)
+            newStack.push(newValue);
+
+            return newStack;
         default:
-            return state;
+            return stack;
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NumberButton from './NumberButton';
 import Screen from './Screen';
 import EnterButton from './EnterButton';
+import OperatorButton from './OperatorButton';
 
 class Calculator extends Component {
   render() {
@@ -12,6 +13,7 @@ class Calculator extends Component {
                 <NumberButton number={1} />
                 <NumberButton number={2} />
                 <NumberButton number={3} />
+                <OperatorButton symbol={"+"} action={ (left, right) => left + right} />
             </div>
             <div className="row">
                 <NumberButton number={4} />
