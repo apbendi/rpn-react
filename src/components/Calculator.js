@@ -9,26 +9,31 @@ class Calculator extends Component {
     return (
         <div className="container">
             <Screen />
+
             <div className="row">
-                <NumberButton number={1} />
-                <NumberButton number={2} />
-                <NumberButton number={3} />
-                <OperatorButton symbol={"+"} action={ (left, right) => left + right} />
+                <NumberButton number={7} />
+                <NumberButton number={8} />
+                <NumberButton number={9} />
+                <OperatorButton symbol={"*"} action={ (left, right) => left * right} />
             </div>
+            
             <div className="row">
                 <NumberButton number={4} />
                 <NumberButton number={5} />
                 <NumberButton number={6} />
                 <OperatorButton symbol={"-"} action={ (left, right) => left - right} />
             </div>
+
             <div className="row">
-                <NumberButton number={7} />
-                <NumberButton number={8} />
-                <NumberButton number={9} />
+                <NumberButton number={1} />
+                <NumberButton number={2} />
+                <NumberButton number={3} />
+                <OperatorButton symbol={"+"} action={ (left, right) => left + right} />
             </div>
+            
             <div className="row">
-                <NumberButton number={0} />
                 <EnterButton />
+                <NumberButton number={0} />
             </div>
         </div>
     );
