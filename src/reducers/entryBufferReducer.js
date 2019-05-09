@@ -1,11 +1,11 @@
 import { PRESS_NUMBER } from '../actions/types';
 
-const initialState = "";
+const initialState = 0;
 
 export default function(state = initialState, action) {
     switch (action.type) {
         case PRESS_NUMBER:
-            return state + "hello there";
+            return parseInt(state.toString() + action.payload.toString());
         default:
             return state;
     }
