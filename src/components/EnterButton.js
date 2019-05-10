@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { pressEnter } from '../actions/entryBufferActions';
-import entryBufferReducer from '../reducers/entryBufferReducer';
 
 class EnterButton extends Component {
     
