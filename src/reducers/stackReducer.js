@@ -5,7 +5,13 @@ export const initialState = [];
 export default function(stack = initialState, action) {
     switch (action.type) {
         case PRESS_ENTER:
-            return [...stack, action.payload];
+            let number = parseInt(action.payload);
+
+            if (Number.isNaN(number)) {
+                return stack;
+            }
+
+            return [...stack, number];
         case PRESS_OPERATOR:
             if (stack.length < 2) {
                 return stack;
