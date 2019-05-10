@@ -1,8 +1,8 @@
 import { PRESS_ENTER, PRESS_OPERATOR } from '../actions/types';
 
-const initialStack = [];
+export const initialState = [];
 
-export default function(stack = initialStack, action) {
+export default function(stack = initialState, action) {
     switch (action.type) {
         case PRESS_ENTER:
             return [...stack, action.payload];

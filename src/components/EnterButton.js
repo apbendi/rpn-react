@@ -30,7 +30,7 @@ class EnterButton extends Component {
 }
 
 const mapStateToProps = state => ({
-    entryBuffer: state.entryBuffer
+    entryBuffer: state.calcMem.entryBuffer
 });
 
 const actionCreators = {

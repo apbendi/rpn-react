@@ -26,9 +26,11 @@ class Screen extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-    entryBuffer: state.entryBuffer,
-    stack: state.stack,
-});
+const mapStateToProps = state => {
+    return ({
+        entryBuffer: state.calcMem.entryBuffer,
+        stack: state.calcMem.stack,
+    });
+}
 
 export default connect(mapStateToProps)(Screen);

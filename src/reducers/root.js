@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import entryBufferReducer from './entryBufferReducer';
-import stackReducer from './stackReducer';
+import calcMemReducer from './calcMemReducer'
 
 export default combineReducers({
-    entryBuffer: entryBufferReducer,
-    stack: stackReducer,
+    calcMem: calcMemReducer,
 });
