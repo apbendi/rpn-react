@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { pressOperator } from '../actions/entryBufferActions';
+import { pressOperator } from '../actions/calcMemActions';
 
 class OperatorButton extends Component {
 

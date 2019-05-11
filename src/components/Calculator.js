@@ -3,6 +3,7 @@ import NumberButton from './NumberButton';
 import Screen from './Screen';
 import EnterButton from './EnterButton';
 import OperatorButton from './OperatorButton';
+import ClearButton from './ClearButton';
 
 class Calculator extends Component {
   render() {
@@ -32,8 +33,9 @@ class Calculator extends Component {
             </div>
             
             <div className="row">
-                <EnterButton />
+                <ClearButton />
                 <NumberButton number={0} />
+                <EnterButton />
             </div>
         </div>
     );

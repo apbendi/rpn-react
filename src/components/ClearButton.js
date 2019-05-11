@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { pressNumber } from '../actions/calcMemActions';
+import { pressClear } from '../actions/calcMemActions';
 
-class NumberButton extends Component {
+class ClearButton extends Component {
 
     constructor(props) {
         super(props);
@@ -11,25 +11,24 @@ class NumberButton extends Component {
 
     onClick(event) {
         event.preventDefault();
-        this.props.pressNumber(this.props.number);
+        this.props.pressClear();
     }
 
     render() {
         return (
         <div>
-            <button type="button" 
+            <button type="button"
                     className="btn btn-default col col-md-1" 
-                    onClick={this.onClick}
-            >
-                {this.props.number}
+                    onClick={this.onClick}>
+                C
             </button>
         </div>
-        )
+        );
     }
 }
 
 const actionCreators = {
-    pressNumber,
+    pressClear,
 }
 
-export default connect(null, actionCreators)(NumberButton);
+export default connect(null, actionCreators)(ClearButton);

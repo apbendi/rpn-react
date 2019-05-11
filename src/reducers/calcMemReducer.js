@@ -1,7 +1,9 @@
-import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR } from '../actions/types';
+import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR } from '../actions/types';
+
+const EMPTY_BUFFER = "";
 
 const initialState = {
-    entryBuffer: "",
+    entryBuffer: EMPTY_BUFFER,
     stack: [],
 }
 
@@ -14,13 +16,18 @@ export default function(state = initialState, action) {
             }
         case PRESS_ENTER:
             return {
-                entryBuffer: initialState.entryBuffer,
+                entryBuffer: EMPTY_BUFFER,
                 stack: stackPressEnter(state.stack, state.entryBuffer)
             }      
         case PRESS_OPERATOR:
             return {
                 entryBuffer: entryBufferPressOperator(state.entryBuffer, state.stack.length),
                 stack: stackPressOperator(state.stack, state.entryBuffer, action.payload),
+            }
+        case PRESS_CLEAR:
+            return {
+                entryBuffer: EMPTY_BUFFER,
+                stack: stackPressClear(state.stack, state.entryBuffer),
             }
         default:
             return state;
@@ -35,7 +42,7 @@ function entryBufferPressOperator(currentBuffer, stackLength) {
     if (stackLength === 0) {
         return currentBuffer;
     } else {
-        return initialState.entryBuffer;
+        return EMPTY_BUFFER;
     }
 }
 
@@ -67,4 +74,14 @@ function stackPressOperator(currentStack, entryBuffer, operation) {
 
     newStack.push(newValue);
     return newStack;
+}
+
+function stackPressClear(currentStack, entryBuffer) {
+    if (entryBuffer !== EMPTY_BUFFER) {
+        return currentStack;
+    } else if (currentStack.length === 0) {
+        return currentStack;
+    }
+
+    return currentStack.slice(0, currentStack.length - 1);
 }
