@@ -1,4 +1,4 @@
-import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR } from './types';
+import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL } from './types';
 
 export function pressNumber(number) {
     return {
@@ -24,5 +24,11 @@ export function pressOperator(action) {
 export function pressClear() {
     return {
         type: PRESS_CLEAR,
+    }
+}
+
+export function pressDecimal() {
+    return {
+        type: PRESS_DECIMAL,
     }
 }

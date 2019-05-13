@@ -1,4 +1,4 @@
-import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR } from '../actions/types';
+import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL } from '../actions/types';
 
 const EMPTY_BUFFER = "";
 
@@ -29,13 +29,22 @@ export default function(state = initialState, action) {
                 entryBuffer: EMPTY_BUFFER,
                 stack: stackPressClear(state.stack, state.entryBuffer),
             }
+        case PRESS_DECIMAL:
+            return {
+                entryBuffer: entryBufferPressDecimal(state.entryBuffer),
+                stack: state.stack,
+            }
         default:
             return state;
     }
 }
 
 function entryBufferPressNumber(currentBuffer, nextNumber) {
-    return parseInt(currentBuffer + nextNumber.toString()).toString();
+    if (currentBuffer.includes(".") && 0 === nextNumber) {
+        return currentBuffer + nextNumber.toString();
+    }
+
+    return parseFloat(currentBuffer + nextNumber.toString()).toString();
 }
 
 function entryBufferPressOperator(currentBuffer, stackLength) {
@@ -46,8 +55,18 @@ function entryBufferPressOperator(currentBuffer, stackLength) {
     }
 }
 
+function entryBufferPressDecimal(currentBuffer) {
+    if ("" === currentBuffer) {
+        return "0.";
+    } else if (currentBuffer.includes(".")) {
+        return currentBuffer;
+    } else {
+        return currentBuffer + "."
+    }
+}
+
 function stackPressEnter(currentStack, entryBuffer) {
-    let newNumber = parseInt(entryBuffer);
+    let newNumber = parseFloat(entryBuffer);
 
     if (isNaN(newNumber)) {
         return currentStack;
@@ -58,7 +77,7 @@ function stackPressEnter(currentStack, entryBuffer) {
 
 function stackPressOperator(currentStack, entryBuffer, operation) {
     let newStack = [...currentStack];
-    let newNumber = parseInt(entryBuffer);
+    let newNumber = parseFloat(entryBuffer);
 
     if (!isNaN(newNumber)) {
         newStack.push(newNumber);
