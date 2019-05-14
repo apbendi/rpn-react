@@ -5,6 +5,7 @@ import EnterButton from './EnterButton';
 import OperatorButton from './OperatorButton';
 import ClearButton from './ClearButton';
 import DecimalButton from './DecimalButton';
+import UrnaryButton from './UrnaryButton';
 
 class Calculator extends Component {
   render() {
@@ -42,6 +43,7 @@ class Calculator extends Component {
 
             <div className="row">
                 <EnterButton />
+                <UrnaryButton symbol={"(-)"} operation={ number => -1 * number} />
             </div>
         </div>
     );

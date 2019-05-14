@@ -1,4 +1,4 @@
-import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL } from '../actions/types';
+import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL, PRESS_URNARY } from '../actions/types';
 
 const EMPTY_BUFFER = "";
 
@@ -33,6 +33,11 @@ export default function(state = initialState, action) {
             return {
                 entryBuffer: entryBufferPressDecimal(state.entryBuffer),
                 stack: state.stack,
+            }
+        case PRESS_URNARY:
+            return {
+                entryBuffer: EMPTY_BUFFER,
+                stack: stackPressUrnary(state.stack, state.entryBuffer, action.payload.operation),
             }
         default:
             return state;
@@ -103,4 +108,22 @@ function stackPressClear(currentStack, entryBuffer) {
     }
 
     return currentStack.slice(0, currentStack.length - 1);
+}
+
+function stackPressUrnary(currentStack, entryBuffer, operation) {
+    let newStack = [...currentStack];
+    let newNumber = parseFloat(entryBuffer);
+
+    if (!isNaN(newNumber)) {
+        newStack.push(newNumber);
+    }
+
+    if (newStack.length < 1) {
+        return currentStack;
+    }
+
+    let newValue = operation(newStack.pop());
+    newStack.push(newValue);
+
+    return newStack;
 }
