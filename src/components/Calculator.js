@@ -44,6 +44,8 @@ class Calculator extends Component {
             <div className="row">
                 <EnterButton />
                 <UrnaryButton symbol={"(-)"} operation={ number => -1 * number} />
+                <UrnaryButton symbol={"√‾‾"} operation={ number => Math.sqrt(number) } />
+                <UrnaryButton symbol={"x²"} operation={ number => number * number } />
             </div>
         </div>
     );
