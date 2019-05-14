@@ -17,28 +17,28 @@ class Calculator extends Component {
                 <NumberButton number={7} />
                 <NumberButton number={8} />
                 <NumberButton number={9} />
-                <OperatorButton symbol={"/"} action={ (left, right) => left / right} />
+                <OperatorButton symbol={"/"} operation={ (left, right) => left / right} />
             </div>
             
             <div className="row">
                 <NumberButton number={4} />
                 <NumberButton number={5} />
                 <NumberButton number={6} />
-                <OperatorButton symbol={"*"} action={ (left, right) => left * right} />
+                <OperatorButton symbol={"*"} operation={ (left, right) => left * right} />
             </div>
 
             <div className="row">
                 <NumberButton number={1} />
                 <NumberButton number={2} />
                 <NumberButton number={3} />
-                <OperatorButton symbol={"-"} action={ (left, right) => left - right} />
+                <OperatorButton symbol={"-"} operation={ (left, right) => left - right} />
             </div>
             
             <div className="row">
                 <ClearButton />
                 <NumberButton number={0} />
                 <DecimalButton />
-                <OperatorButton symbol={"+"} action={ (left, right) => left + right} />
+                <OperatorButton symbol={"+"} operation={ (left, right) => left + right} />
             </div>
 
             <div className="row">

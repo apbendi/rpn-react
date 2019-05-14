@@ -11,7 +11,7 @@ class OperatorButton extends Component {
 
     onClick(event) {
         event.preventDefault();
-        this.props.pressOperator(this.props.action);
+        this.props.pressOperator(this.props.operation);
     }
 
     render() {

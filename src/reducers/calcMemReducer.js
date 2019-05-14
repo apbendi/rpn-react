@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
         case PRESS_OPERATOR:
             return {
                 entryBuffer: entryBufferPressOperator(state.entryBuffer, state.stack.length),
-                stack: stackPressOperator(state.stack, state.entryBuffer, action.payload),
+                stack: stackPressOperator(state.stack, state.entryBuffer, action.payload.operation),
             }
         case PRESS_CLEAR:
             return {

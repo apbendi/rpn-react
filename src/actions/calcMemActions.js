@@ -14,10 +14,10 @@ export function pressEnter(bufferNumber) {
     }
 }
 
-export function pressOperator(action) {
+export function pressOperator(operation) {
     return {
         type: PRESS_OPERATOR,
-        payload: action,
+        payload: { operation, },
     }
 }
 
