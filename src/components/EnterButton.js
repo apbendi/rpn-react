@@ -11,7 +11,7 @@ class EnterButton extends Component {
 
     onClick(event) {
         event.preventDefault();
-        this.props.pressEnter(this.props.entryBuffer);
+        this.props.pressEnter();
     }
 
     render() {
@@ -28,12 +28,8 @@ class EnterButton extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    entryBuffer: state.calcMem.entryBuffer
-});
-
 const actionCreators = {
     pressEnter,
 }
 
-export default connect(mapStateToProps, actionCreators)(EnterButton);
+export default connect(null, actionCreators)(EnterButton);
