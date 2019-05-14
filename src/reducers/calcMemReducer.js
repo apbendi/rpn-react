@@ -1,4 +1,5 @@
-import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL, PRESS_URNARY } from '../actions/types';
+import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL, PRESS_URNARY, GOT_RAND } from '../actions/types';
+import { parse } from '@babel/core';
 
 const EMPTY_BUFFER = "";
 
@@ -38,6 +39,11 @@ export default function(state = initialState, action) {
             return {
                 entryBuffer: EMPTY_BUFFER,
                 stack: stackPressUrnary(state.stack, state.entryBuffer, action.payload.operation),
+            }
+        case GOT_RAND:
+            return {
+                entryBuffer: EMPTY_BUFFER,
+                stack: stackGotRand(state.stack, state.entryBuffer, action.payload.number),
             }
         default:
             return state;
@@ -124,6 +130,23 @@ function stackPressUrnary(currentStack, entryBuffer, operation) {
 
     let newValue = operation(newStack.pop());
     newStack.push(newValue);
+
+    return newStack;
+}
+
+function stackGotRand(currentStack, entryBuffer, randValue) {
+    let newStack = [...currentStack];
+    let bufferNum = parseFloat(entryBuffer);
+
+    if (!isNaN(bufferNum)) {
+        newStack.push(bufferNum);
+    }
+
+    let randNum = parseFloat(randValue);
+
+    if (!isNaN(randNum)) {
+        newStack.push(randNum);
+    }
 
     return newStack;
 }

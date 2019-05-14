@@ -8,6 +8,7 @@ import ClearButton from './ClearButton';
 import DecimalButton from './DecimalButton';
 import UrnaryButton from './UrnaryButton';
 import KeyHandler from './KeyHandler';
+import RandButton from './RandButton';
 
 class Calculator extends Component {
   render() {
@@ -48,6 +49,10 @@ class Calculator extends Component {
                 <UrnaryButton symbol={"(-)"} operation={ negate } />
                 <UrnaryButton symbol={"√‾‾"} operation={ squareRoot } />
                 <UrnaryButton symbol={"x²"} operation={ square } />
+            </div>
+
+            <div className="row">
+                <RandButton />
             </div>
 
             <KeyHandler />

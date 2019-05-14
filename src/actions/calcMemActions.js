@@ -1,4 +1,4 @@
-import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL, PRESS_URNARY } from './types';
+import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL, PRESS_URNARY, GOT_RAND } from './types';
 
 export function pressNumber(number) {
     return {
@@ -33,9 +33,27 @@ export function pressDecimal() {
 }
 
 export function pressUrnary(operation) {
-    console.log(this.operation);
     return {
         type: PRESS_URNARY,
         payload: { operation, },
+    }
+}
+
+export function getRand() {
+    return async function(dispatch) {
+        let randURL = 'https://www.random.org/integers/?num=1&min=1&max=1000&col=1&base=10&format=plain&rnd=new';
+
+        let response = await fetch(randURL, {
+                                    method: 'GET',
+                                    headers: {
+                                        'content-type': 'text/plain;charset=UTF-8',
+                                    }
+                                });
+        let number = await response.text();
+
+        dispatch({
+            type: GOT_RAND,
+            payload: { number, },
+        });
     }
 }
