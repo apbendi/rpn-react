@@ -19,7 +19,7 @@ class Screen extends Component {
                 {stackItems}
             </ul>
             <div className="panel-footer">
-                {this.props.entryBuffer}
+                {this.props.entryBuffer}<br />
             </div>
         </div>
     );
