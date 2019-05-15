@@ -1,5 +1,4 @@
 import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL, PRESS_URNARY, GOT_RAND } from '../actions/types';
-import { parse } from '@babel/core';
 
 const EMPTY_BUFFER = "";
 

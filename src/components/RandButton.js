@@ -13,19 +13,26 @@ class RandButton extends Component {
         this.props.getRand();
     }
 
-  render() {
-    return (
-      <div>
-          <button type="button" className="btn btn-default col col-md-1" onClick={this.onClick}>
-            RAND
-        </button>  
-      </div>
-    );
-  }
+    render() {
+        let loadingIndicator = (<span className="glyphicon glyphicon-refresh" aria-hidden="true"></span>);
+
+        return (
+            <div>
+                <button type="button" className="btn btn-default col col-md-1" onClick={this.onClick}>
+                    {this.props.isFetching ? loadingIndicator : ""}{" "}
+                    RAND
+                </button>
+            </div>
+        );
+    }
 }
+
+const mapStateToProps = state => ({
+    isFetching: state.interface.isFetchingRand,
+});
 
 const actionCreators = {
     getRand,
 }
 
-export default connect(null, actionCreators)(RandButton);
+export default connect(mapStateToProps, actionCreators)(RandButton);

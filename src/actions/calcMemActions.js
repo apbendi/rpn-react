@@ -1,4 +1,5 @@
-import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, PRESS_DECIMAL, PRESS_URNARY, GOT_RAND } from './types';
+import { PRESS_NUMBER, PRESS_ENTER, PRESS_OPERATOR, PRESS_CLEAR, 
+         PRESS_DECIMAL, PRESS_URNARY, ASKED_RAND, GOT_RAND, } from './types';
 
 export function pressNumber(number) {
     return {
@@ -39,8 +40,23 @@ export function pressUrnary(operation) {
     }
 }
 
+function askedRand() {
+    return {
+        type: ASKED_RAND,
+    }
+}
+
+function gotRand(numberString) {
+    return {
+        type: GOT_RAND,
+        payload: { number: numberString, },
+    };
+}
+
 export function getRand() {
     return async function(dispatch) {
+        dispatch(askedRand());
+        
         let randURL = 'https://www.random.org/integers/?num=1&min=1&max=1000&col=1&base=10&format=plain&rnd=new';
 
         let response = await fetch(randURL, {
@@ -51,9 +67,6 @@ export function getRand() {
                                 });
         let number = await response.text();
 
-        dispatch({
-            type: GOT_RAND,
-            payload: { number, },
-        });
+        dispatch(gotRand(number));
     }
 }
