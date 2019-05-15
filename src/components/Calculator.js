@@ -14,9 +14,15 @@ class Calculator extends Component {
   render() {
     return (
         <div className="container">
-            <Screen />
+            <div className="row">
+                <div className="col col-xs-2 hidden-sm hidden-md hidden-lg hidden-xl"></div>
+                <div className="col col-md-4 col-sm-4 col-xs-8" style={{padding: '0'}}>
+                    <Screen />
+                </div>
+            </div>        
 
             <div className="row">
+                <div className="col col-xs-2 hidden-sm hidden-md hidden-lg hidden-xl"></div>
                 <NumberButton number={7} />
                 <NumberButton number={8} />
                 <NumberButton number={9} />
@@ -24,6 +30,7 @@ class Calculator extends Component {
             </div>
             
             <div className="row">
+                <div className="col col-xs-2 hidden-sm hidden-md hidden-lg hidden-xl"></div>
                 <NumberButton number={4} />
                 <NumberButton number={5} />
                 <NumberButton number={6} />
@@ -31,6 +38,7 @@ class Calculator extends Component {
             </div>
 
             <div className="row">
+                <div className="col col-xs-2 hidden-sm hidden-md hidden-lg hidden-xl"></div>
                 <NumberButton number={1} />
                 <NumberButton number={2} />
                 <NumberButton number={3} />
@@ -38,6 +46,7 @@ class Calculator extends Component {
             </div>
             
             <div className="row">
+                <div className="col col-xs-2 hidden-sm hidden-md hidden-lg hidden-xl"></div>
                 <ClearButton />
                 <NumberButton number={0} />
                 <DecimalButton />
@@ -45,6 +54,7 @@ class Calculator extends Component {
             </div>
 
             <div className="row">
+                <div className="col col-xs-2 hidden-sm hidden-md hidden-lg hidden-xl"></div>
                 <EnterButton />
                 <UrnaryButton symbol={"(-)"} operation={ negate } />
                 <UrnaryButton symbol={"√‾‾"} operation={ squareRoot } />
@@ -52,6 +62,8 @@ class Calculator extends Component {
             </div>
 
             <div className="row">
+                <div className="col col-xs-2 hidden-sm hidden-md hidden-lg hidden-xl"></div>
+                <div className="col col-md-3 col-sm-3 col-xs-6"></div>
                 <RandButton />
             </div>
 

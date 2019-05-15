@@ -16,7 +16,9 @@ class UrnaryButton extends Component {
     render() {
         return (
             <div>
-                <button type="button" className="btn btn-default col col-md-1" onClick={this.onClick}>
+                <button type="button" 
+                        className="btn btn-default col col-md-1 col-sm-1 col-xs-2" 
+                        onClick={this.onClick}>
                     {this.props.symbol}
                 </button>
             </div>
